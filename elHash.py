@@ -140,12 +140,19 @@ recetas.append("Solomillo de cerdo a la pimienta","99999999999999")
 recetas.append("7","Uvas rellenas de queso")
 recetas.append("Uvas rellenas de queso","99999999999999")
 
-recetas.append("0Hamburguesa","Comidas Rápidas")
-recetas.append("0Hamburguesa","Comidas Rápidas")
+recetas.append("0Coliflor al horno con especias","Comidas Rápidas")
 
-a = input("Elija una opcion 1 a 6: ")
-print(recetas.get(str(a))) #Así se saca el str de la comida osea "recetas[a][1]"
-print(int(recetas.get(recetas.get(str(a))))) #así se saca el int del precio osea "recetas[a][2]"
+a = input("Elija una opcion: ")
 
-b= "0" + recetas.get(str(a)) #Esto se usaría para saber a que categoria pertenece el plato
-print("El pedido " + recetas.get(str(a)) + " pertenece a la categoria "+ recetas.get(b))
+######recordar que "a" es el NUMERO del plato en el menu
+######para sacar el NOMBRE DE LOS PLATOS
+Nombre_del_plato = recetas.get(str(a))
+print(Nombre_del_plato)
+
+######para el PRECIO DE LOS PLATOS
+precio = int(recetas.get(recetas.get(str(a))))
+print(precio) #así se saca el int del precio osea "recetas[a][2]"
+
+#sacarle CATEGORIA DE LOS PLATOS
+categoria = recetas.get("0" + recetas.get(str(a)))
+print(categoria)
