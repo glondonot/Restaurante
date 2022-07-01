@@ -1,5 +1,4 @@
 import tkinter
-from PIL import Image, ImageTk
 from estructuras import Pila
 from estructuras import Queue
 
@@ -58,60 +57,6 @@ pedidos = Queue()
 ventas = Pila()
 dinero = 0
 
-
-# Función para cambiar el icono del programa
-# No olvidar agregar la ruta de su pc
-def icon():
-    ventana.title("Restaurantetas")
-    ventana.iconbitmap(
-        "C:\\Users\\nicol\\OneDrive\\Data Structures 2022-01\\Data Structures\\Proyecto\\-Restaurante\\Restaurante\\Images\\IconMain.ico"
-    )
-
-
-def destroyTop(top):
-    top.destroy()
-
-
-# No olvidar agregar la ruta de su pc
-def FelipeGod():
-    imagen = ImageTk.PhotoImage(
-        Image.open(
-            "C:\\Users\\nicol\\OneDrive\\Data Structures 2022-01\\Data Structures\\Proyecto\\-Restaurante\\Restaurante\\Images\\FelipeGod1.png"
-        )
-    )
-
-    fondoVentana = "#49A"
-    fondoBotones = "#FFA833"
-
-    top = tkinter.Toplevel()
-
-    top.geometry(
-        "300x400+900+100"
-    )  # Esos valores de '+900+100' sirven para posicionar la ventana en el centro de la pantalla
-    top.resizable(0, 0)
-    top.title("FelipeGod")
-    label1 = tkinter.Label(
-        top, text="FelipeGod", font="Amaranth 20", width=30, height=1
-    ).pack()
-    label2 = tkinter.Label(
-        top, text="Precio: Invaluable", font="Amaranth 20", width=30, height=1
-    ).pack()
-    label3 = tkinter.Label(top, image=imagen, height=100, width=222).pack()
-
-    button1 = tkinter.Button(
-        top,
-        text="Añadir a carrito",
-        font="Amaranth 20",
-        width=15,
-        # height=1,
-        bg=fondoBotones,
-        command=lambda: [agregarPedido(6), destroyTop(top)],
-        bd=5,
-    ).pack()
-
-    top.mainloop()
-
-
 def limpiarMenu():
     tituloMenu.pack_forget()
     tituloTomarPedido.pack_forget()
@@ -155,19 +100,19 @@ def agregarPedido(a):
     agregarPedidoText["text"] = (
         "Agregando "
         + "\n"
-        + recetas.get(a)
+        + recetas.get(str(a))
         + " de $"
-        + str(recetas.get(recetas.get(a)))
+        + str(recetas.get(recetas.get(str(a))))
         + " \n a la lista de pedidos"
     )
     agregarPedidoText.pack(padx=10, pady=5)
     tomarPedidoBot.pack(padx=10, pady=5)
     administrarPedidosBot.pack(padx=10, pady=5)
     menuPrincipalBot.pack(padx=10, pady=5)
-    pedidos.enqueue(recetas.get(a))
-    ventas.apilar(recetas.get(recetas.get(a)))
-    ventas.apilar(recetas.get(a))
-    dinero += recetas.get(recetas.get(a))
+    pedidos.enqueue(recetas.get(str(a)))
+    ventas.apilar(int(recetas.get(recetas.get(str(a)))))
+    ventas.apilar(recetas.get(str(a)))
+    dinero += int(recetas.get(recetas.get(str(a))))
 
 
 def administrarPedidos():
@@ -242,7 +187,6 @@ def menuPrincipal():
 fondoVentana = "#49A"
 fondoBotones = "#FFA833"
 ventana = tkinter.Tk()
-icon()
 ventana.geometry("500x600+400+100")
 ventana.resizable(width=0, height=0)
 ventana["bg"] = fondoVentana
@@ -363,7 +307,6 @@ felipeBot = tkinter.Button(
     width=30,
     height=1,
     bg=fondoBotones,
-    command=FelipeGod,
 )
 listaPedidosTitulo = tkinter.Label(
     ventana, text="ESTOS SON LOS PEDIDOS", font="Amaranth 20"
