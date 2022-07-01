@@ -1,4 +1,3 @@
-from printy import printy
 class NodeTree:
     def __init__(self, data):
         self.data = data
@@ -102,7 +101,7 @@ class AVL:
     def __findMin(self, node):
             
         if node.left is None:
-            printy(f'[b>]{node.data}')
+            pass
         elif node is None:
             return None
         else:

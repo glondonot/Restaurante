@@ -106,7 +106,7 @@ def crearAVL():
 
     for i in range(44):
         temp = recetas[i]
-        f = open("C:/Users/nicol/OneDrive/Data Structures 2022-01/Data Structures/Restaurante/RecetasTXT/"+temp+'.txt', "r")
+        f = open("C:/Users/gabri/Desktop/-Restaurante-main/RecetasTXT/"+temp+'.txt', "r")
         linked = LinkedList()
         
         for linea in f:

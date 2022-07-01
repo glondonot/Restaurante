@@ -2,6 +2,7 @@ import tkinter
 from estructuras import Pila
 from estructuras import Queue
 from estructuras import HashMap
+from LecturaTXT import crearAVL
 
 class Graph:
     # Constructor
@@ -187,6 +188,7 @@ pedidos = Queue()
 ventas = Pila()
 dinero = 0
 
+
 def limpiarMenu():
     tituloMenu.pack_forget()
     tituloTomarPedido.pack_forget()
@@ -222,6 +224,11 @@ def limpiarMenu():
     solomilloBot.pack_forget()
     menuDesayunos.pack_forget()
     menuAlmuerzos.pack_forget()
+    btnEntry.pack_forget()
+    recetasVer.pack_forget()
+    entry.pack_forget()
+    btnRegresarRecetas.pack_forget()
+    btnRecetas.pack_forget()
 
 
 def tomarPedido():
@@ -324,9 +331,9 @@ def menuPrincipal():
     tituloMenu.pack(padx=10, pady=10)
     tomarPedidoBot.pack(padx=10, pady=10)
     verMenuBot.pack(padx=10, pady=10)
-    verRecestasBot.pack(padx=10, pady=10)
     administrarPedidosBot.pack(padx=10, pady=10)
     administrarVentasBot.pack(padx=10, pady=10)
+    btnRecetas.pack(padx=10, pady=10)
 
 def paginaSiguiente():
     limpiarMenu()
@@ -348,7 +355,7 @@ def verMenu():
 fondoVentana = "#49A"
 fondoBotones = "#FFA833"
 ventana = tkinter.Tk()
-ventana.geometry("500x600+400+100")
+ventana.geometry("600x700+400+100")
 ventana.resizable(width=0, height=0)
 ventana["bg"] = fondoVentana
 
@@ -587,6 +594,60 @@ menuAlmuerzos = tkinter.Label(
 
 
 
+def extract():
+    a = entry.get()
+    limpiarMenu()
+    btnRegresarRecetas.pack(padx=10, pady=10)
+    arbol, dicc = crearAVL()
+    bo = arbol.Find(a)
+
+
+    if bo:
+        recetasVer['text'] = dicc[a].string()
+        recetasVer.pack(padx=10, pady=5)
+    else:
+        recetasVer['text'] = 'No encontrado'
+        recetasVer.pack(padx=10, pady=5)
+
+def verRecetas():
+    limpiarMenu()
+    entry.pack(padx=10, pady=10)
+    btnRegresarRecetas.pack(padx=10, pady=10)
+    btnEntry.pack(padx=10, pady=10)
+
+btnRecetas = tkinter.Button(
+    ventana,
+    text="Ver recetas",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=verRecetas,
+)
+entry = tkinter.Entry()
+
+btnEntry = tkinter.Button(
+    ventana, 
+    text="Buscar receta",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=extract
+)
+recetasVer = tkinter.Label(ventana, font="Amaranth 12")
+
+btnRegresarRecetas = tkinter.Button(
+    ventana, 
+    text="Principal",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=menuPrincipal
+) 
+
+
 listaPedidosTitulo = tkinter.Label(
     ventana, text="ESTOS SON LOS PEDIDOS", font="Amaranth 20"
 )
@@ -610,9 +671,9 @@ agregarPedidoText = tkinter.Label(ventana, font="Amaranth 20")
 tituloMenu.pack(padx=10, pady=10)
 tomarPedidoBot.pack(padx=10, pady=10)
 verMenuBot.pack(padx=10, pady=10)
-verRecestasBot.pack(padx=10, pady=10)
 administrarPedidosBot.pack(padx=10, pady=10)
 administrarVentasBot.pack(padx=10, pady=10)
+btnRecetas.pack(padx=10, pady=10)
 
 
 ventana.mainloop()
