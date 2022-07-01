@@ -31,12 +31,6 @@ class HashMap:
                                 if pair[0] == key:
                                         return pair[1]
                 return None
-			
-        def print(self):
-                print('---PHONEBOOK----')
-                for item in self.map:
-                        if item is not None:
-                                print(str(item))
 
 Recetas_Hash = HashMap()
 Recetas_Hash.append("1","Hamburguesa")
