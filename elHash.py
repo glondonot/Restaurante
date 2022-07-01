@@ -57,5 +57,5 @@ recetas = [
 ]
 
 a = input("Elija una opcion 1 a 6: ")
-print(Recetas_Hash.get(a)) #Así se saca el str de la comida
-print(int(Recetas_Hash.get(Recetas_Hash.get(a)))) #así se saca el int del precio
+print(Recetas_Hash.get(a)) #Así se saca el str de la comida osea "recetas[a][1]"
+print(int(Recetas_Hash.get(Recetas_Hash.get(a)))) #así se saca el int del precio osea "recetas[a][2]"
