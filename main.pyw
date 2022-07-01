@@ -22,6 +22,8 @@ class Graph:
             for j in range(len(graph.adjList[p])):
                 print(graph.adjList[p][j])
 
+
+
 # Añadir elementos al menú, y añadirles un precio correspondiente a cada elemento
 recetas = HashMap()
 #Desayunos
@@ -180,7 +182,7 @@ platos =  ["Coliflor al horno con especias", "Omelette de huevo", "Cocochas de b
 "Salmón a la plancha fácil", "Barquitas de endivias", "Frijoles", "Fritos de rape o de pixín", "Muslos de pollo al horno",
 "Parmentier de patata", "Salmón en papillote al horno con verduras", "Solomillo de cerdo a la pimienta", "Uvas rellenas de queso"]
 
-
+grafo_categorias = Graph(categorias,platos)
 pedidos = Queue()
 ventas = Pila()
 dinero = 0
@@ -218,6 +220,8 @@ def limpiarMenu():
     pulpoBot.pack_forget()
     lomoBot.pack_forget()
     solomilloBot.pack_forget()
+    menuDesayunos.pack_forget()
+    menuAlmuerzos.pack_forget()
 
 
 def tomarPedido():
@@ -337,6 +341,9 @@ def paginaSiguiente():
 
 def verMenu():
     limpiarMenu()
+    menuDesayunos.pack(padx=10, pady=10)
+    menuAlmuerzos.pack(padx=10, pady=10)
+    menuPrincipalBot.pack(padx=10, pady=10)
 
 fondoVentana = "#49A"
 fondoBotones = "#FFA833"
@@ -567,10 +574,17 @@ verRecestasBot = tkinter.Button(
     height=1,
     bg=fondoBotones
 )
-
+xd = "Desayunos\nColiflor al horno con especias\nOmelette de huevo\nCocochas de bacalao al pil pil\nZamburiñas al horno\nTortilla de acelgas\nHervido valenciano"
 menuDesayunos = tkinter.Label(
-    ventana, text= grafo_categorias.printGraph(categorias,0), font="Amaranth 20"
+    ventana, text= xd, font="Amaranth 20"
 )
+
+Almuerzos = "Platos fuertes\nPechugas de pollo al horno\nTataki de bonito\nDorada a la sidra\nPulpo al horno con patatas\nLomo de cerdo al ajillo   \nSolomillo de cerdo con salsa hoisin"
+
+menuAlmuerzos = tkinter.Label(
+    ventana, text= Almuerzos, font="Amaranth 20"
+)
+
 
 
 listaPedidosTitulo = tkinter.Label(
