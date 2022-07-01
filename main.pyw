@@ -17,11 +17,10 @@ class Graph:
                     self.adjList[i].append(dest[j])
  
 # Función para imprimir la representación de lista de adyacencia de un graph
-    def printGraph(graph,src):
-        for i in range(0,len(graph.adjList)):
-            print(src[i])
-            for j in range(len(graph.adjList[i])):
-                print(graph.adjList[i][j])
+    def printGraph(graph,src,p):
+            print(src[p])
+            for j in range(len(graph.adjList[p])):
+                print(graph.adjList[p][j])
 
 # Añadir elementos al menú, y añadirles un precio correspondiente a cada elemento
 recetas = HashMap()
@@ -213,6 +212,12 @@ def limpiarMenu():
     anteriorPagBot.pack_forget()
     verMenuBot.pack_forget()
     verRecestasBot.pack_forget()
+    pechugasBot.pack_forget()
+    tatakiBot.pack_forget()
+    doradaBot.pack_forget()
+    pulpoBot.pack_forget()
+    lomoBot.pack_forget()
+    solomilloBot.pack_forget()
 
 
 def tomarPedido():
@@ -321,10 +326,17 @@ def menuPrincipal():
 
 def paginaSiguiente():
     limpiarMenu()
+    pechugasBot.pack(padx=10, pady=10)
+    tatakiBot.pack(padx=10, pady=10)
+    doradaBot.pack(padx=10, pady=10)
+    pulpoBot.pack(padx=10, pady=10)
+    lomoBot.pack(padx=10, pady=10)
+    solomilloBot.pack(padx=10, pady=10)
     menuPrincipalBot.pack(padx=10, pady=10)
     anteriorPagBot.pack(padx=10, pady=10)
 
-
+def verMenu():
+    limpiarMenu()
 
 fondoVentana = "#49A"
 fondoBotones = "#FFA833"
@@ -451,6 +463,72 @@ hervidoBot = tkinter.Button(
     bg=fondoBotones,
     command=lambda: agregarPedido(6),
 )
+pechugasBot = tkinter.Button(
+    ventana,
+    text="Pechugas de pollo al horno: 20000",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=lambda: agregarPedido(9),
+)
+
+tatakiBot = tkinter.Button(
+    ventana,
+    text="Tataki de bonito: 21000",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=lambda: agregarPedido(10),
+)
+
+
+doradaBot = tkinter.Button(
+    ventana,
+    text="Dorada a la sidra: 23000",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=lambda: agregarPedido(11),
+)
+
+
+pulpoBot = tkinter.Button(
+    ventana,
+    text="Pulpo al horno con patatas: 24000",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=lambda: agregarPedido(12),
+)
+
+lomoBot = tkinter.Button(
+    ventana,
+    text="Lomo de cerdo al ajillo: 25000",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=lambda: agregarPedido(13),
+)
+
+recetas.append("14","Solomillo de cerdo con salsa hoisin")
+recetas.append("Solomillo de cerdo con salsa hoisin","26000")
+
+solomilloBot = tkinter.Button(
+    ventana,
+    text="Solomillo de cerdo con salsa hoisin: 26000",
+    font="Amaranth 20",
+    width=30,
+    height=1,
+    bg=fondoBotones,
+    command=lambda: agregarPedido(14),
+)
+
+
 
 siguientePagBot = tkinter.Button(
     ventana,
@@ -478,7 +556,8 @@ verMenuBot = tkinter.Button(
     font="Amaranth 20",
     width=30,
     height=1,
-    bg=fondoBotones
+    bg=fondoBotones,
+    command=verMenu
 )
 verRecestasBot = tkinter.Button(
     ventana,
@@ -489,6 +568,9 @@ verRecestasBot = tkinter.Button(
     bg=fondoBotones
 )
 
+menuDesayunos = tkinter.Label(
+    ventana, text= grafo_categorias.printGraph(categorias,0), font="Amaranth 20"
+)
 
 
 listaPedidosTitulo = tkinter.Label(
