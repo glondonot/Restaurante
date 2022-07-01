@@ -130,7 +130,7 @@ class Pila:
 
 class HashMap:
     def __init__(self):
-            self.size = 44
+            self.size = 100
             self.map = [None] * self.size
     
     def _get_hash(self, key):
